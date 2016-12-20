@@ -35,10 +35,18 @@ app.controller('MyApp.HomeController',[
         //or services.
         $scope.name = 'bob';
         $scope.age = 45;
+        $scope.nameList = ['susan' , 'jane' , 'larry', 'joe','frank'];
 
         $scope.increaseAge = function (){
             console.log('increaseAge');
-            $scope.age = $scope.age +1;
+            $scope.age++;
         }
+        $scope.addListItem = function (){
+            console.log('add list item');
+
+            $scope.nameList.push($scope.name);
+
+        }
+
     }
 ]);
