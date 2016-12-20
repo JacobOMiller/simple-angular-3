@@ -2,8 +2,46 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "silver",
+      "author": "sable"
+    },
+    {
+      "id": 2,
+      "title": "steve",
+      "author": "roggers"
+    },
+    {
+      "id": 3,
+      "title": "super",
+      "author": "pro"
+    },
+    {
+      "id": 4,
+      "title": "bob",
+      "author": "ross"
+    },
+    {
+      "title": "hello",
+      "author": "new world",
+      "id": 5
+    },
+    {
+      "title": "ello",
+      "author": "jello",
+      "id": 6
+    },
+    {
+      "id": 8,
+      "title": "Bruce",
+      "author": "Banner"
+    },
+    {
+      "id": 9
+    },
+    {
+      "title": "hello",
+      "author": "world",
+      "id": 10
     }
   ],
   "comments": [

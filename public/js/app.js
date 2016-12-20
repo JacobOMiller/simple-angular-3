@@ -18,6 +18,11 @@ app.config([
             .state('contact',{
                 url:'/contact',
                 templateUrl:'templates/contact.html'
+            })
+            .state('httprequest',{
+                url:'/httprequest',
+                templateUrl:'templates/httprequest.html',
+                controller:'MyApp.httpRequestController'
             });
     }
 ])
@@ -49,4 +54,96 @@ app.controller('MyApp.HomeController',[
         }
 
     }
+]);
+
+app.controller('MyApp.httpRequestController',[
+    '$scope', '$http',
+    function ($scope, $http){
+        console.log('new controller for httpRequest');
+        //post object to store post info
+        $scope.post = {};
+        $scope.postList = [];
+
+
+        $scope.create = function (){
+            console.log('trying to create a post',$scope.post);
+            //make a call to the server
+            $http ({
+                url:'http://localhost:3000/posts',
+                //use the post method because we want to
+                //post / create data on the server
+                method:'POST',
+                //Specify the data that we want to save
+                data:$scope.post
+            })
+            .success (function (response){
+                console.log('this is the response' , response);
+            })
+            .error (function (response){
+                console.error('this is the error' , response);
+            })
+        }
+
+
+        $scope.readAll = function (){
+            console.log('read all posts is working');
+
+            //Make a call to grab all the posts objects
+            $http ({
+                url:'http://localhost:3000/posts',
+                //use the post method because we want to
+                //post / create data on the server
+                method:'Get'
+            })
+            .success (function (response){
+                console.log('this is the response' , response);
+                $scope.postList = response;
+            })
+            .error (function (response){
+                console.error('this is the error' , response);
+            })
+        }
+
+        $scope.updatePost = function (){
+            console.log('update post');
+
+            $http ({
+                url:'http://localhost:3000/posts/'+ $scope.post.id,
+                //use the PUT method because we want to
+                //update data on the server
+                method:'PUT',
+                //Specify the data that we want to save
+                data:$scope.post
+            })
+            .success (function (response){
+                console.log('this is the response' , response);
+            })
+            .error (function (response){
+                console.error('this is the error' , response);
+            })
+
+        }
+        $scope.deletePost = function (){
+            console.log('delete post button is working');
+            $http ({
+                url:'http://localhost:3000/posts/'+ $scope.post.id,
+                //use the PUT method because we want to
+                //update data on the server
+                method:'DELETE',
+                //Specify the data that we want to save
+                data:$scope.post
+            })
+            .success (function (response){
+                console.log('this is the response' , response);
+            })
+            .error (function (response){
+                console.error('this is the error' , response);
+            })
+
+        }
+    }
+
+
+    
+
 ]);
